@@ -5,6 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.table.entities.User;
+import com.table.helper.ConnectionProvider;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
 
 
@@ -92,4 +96,31 @@ public class UserDao {
         }
         return f;
     }
+    public boolean createNewTable( String tableName, List<String> newTableColumns,String email) {
+    
+    //ArrayList to string separated by comma
+    
+    String tColumNames = String.join(",",newTableColumns );
+     boolean f=false;
+        try{
+            Statement stmt = ConnectionProvider.getStatement();
+            String query = "CREATE TABLE "+tableName+"( "+tColumNames+";";
+            System.out.println("query : "+query);
+            stmt.execute(query);
+            String q="INSERT INTO userInfo(email,tablename) VALUES (?,?)";
+            PreparedStatement pstmt= this.con.prepareStatement(q);
+            
+            pstmt.setString(1, email);
+            pstmt.setString(2, tableName);
+            
+            System.out.println(q);
+            pstmt.executeUpdate();
+            f=true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    
+}
 }

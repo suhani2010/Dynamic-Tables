@@ -28,10 +28,11 @@ if(user==null)
     <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
     </head>
     <body style="background: #F6ECEC">
-        <div>
-            <button data-toggle="modal" data-target="#table-modal" style="color: #fff">Create table</button>
+        <div class="text-center mt-4">
+            <button class="btn btn-dark" data-toggle="modal" data-target="#table-modal" style="color: #fff">Create table</button>
+            <a  class="btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
         </div> 
-      <a  href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+      
  
 
 <!-- Modal -->
@@ -45,62 +46,24 @@ if(user==null)
     </button>
   </div>
   <div class="modal-body">
-
+      <h6 style="color : #FF0800">**first field will be the primary key</h6>
           <div id="table-details">
               
-              <form action="CreateTableServlet" id="tableDetails-form" method="post" enctype="multipart/form-data">
-                  <table class="table">
+              
+              <form action="CreateTableServlet" id="tableDetails-form" method="post">
+                  
+<!--                   <div class="row" id="row0">
+                      <div class="col-6">
+                          <label>Enter Table Name</label>
+                          <input type="text" name="tablename" class="form-control" placeholder="Enter table name">
+                      </div>
+                   </div>-->
+                       
 
-            <tbody>
-                <tr>
-                    <th scope="row">Table Name : </th>
-                    <td><input type="text" class="form-control" name="table_name" placeholder="Enter table name"></td>
-
-                </tr>
-                      <tr>
-                        <th scope="row">Enter total number of fields: </th>
-                        <td><input type="number" class="form-control" name="fields_number" placeholder="Enter total number of fields" ></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">Enter field name : </th>
-                        <td><input type="text" class="form-control" name="field_name" placeholder="Enter field name"></td>
-
-                      </tr>
-            </tbody>
-        </table>
-                        <button type="submit" class="btn btn-outline-dark">Save Details</button>
+                  
               </form>
-
-    </div>
+              <button class="btn btn-dark mt-2" id="btnadd" onclick="add_more_field()">Add fields +</button>
+            </div>
 
   </div>
   <div class="modal-footer">
@@ -132,5 +95,50 @@ if(user==null)
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
+
+
+<!--<script>
+ $(document).ready(function(){
+$('#tableDetails-form').on('submit',function(event){
+    event.preventDefault();
+    let form=new FormData(this);
+    
+    //sending data to register servlet through ajax
+    $.ajax({
+        url:"CreateTableServlet",
+        type:'post',
+        data:form,
+        success: function (data, textStatus, jqXHR) {
+            if(data.trim()=="REGISTERED"){
+                swal({
+                     title: "Table Created Succesfully!",
+                     text: "",
+                     icon: "success",
+                    
+                 }).then((value) => {
+                     window.location="home.jsp"
+                 });
+            }
+            else{
+                swal("Something went wrong try again with some other tablename!!");
+            }
+       // console.log(data);
+        },
+        
+        error: function (jqXHR,textStatus,errorThrown){
+            swal("Something went wrong try again!!");
+        },
+        processData: false,
+        contentType:false
+        
+    });
+});
+
+
+
+
+
+});
+        </script>-->
     </body>
 </html>
