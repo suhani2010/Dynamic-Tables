@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.table.entities.User;
 import com.table.helper.ConnectionProvider;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -121,6 +123,56 @@ public class UserDao {
             e.printStackTrace();
         }
         return f;
+        
     
 }
+    public ArrayList<String> getFields(String tableName)
+    {
+        ArrayList<String> tfields=new ArrayList<String>();
+        try{
+        Statement st = ConnectionProvider.getStatement();
+        ResultSet rs = st.executeQuery("desc "+tableName);
+            
+            while(rs.next())
+            {
+                tfields.add(rs.getString(1));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return tfields;
+    }
+    
+    public boolean insertData(ArrayList<String> tdata,String tableName){
+        
+        boolean f=false;
+        try{
+            
+            
+            
+            
+            String q="";
+            int c=0;
+            for(String s:tdata)
+            {
+                
+                q+="'"+s+"'";
+                c++;
+                if(c==tdata.size())q+=")";
+                else q+=",";
+            }
+            System.out.println("q = "+q);
+            String query="INSERT INTO "+tableName+" VALUES("+q;
+            System.out.println(query);
+            Statement st= ConnectionProvider.getStatement();
+            st.executeUpdate(query);
+            f=true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    }
 }

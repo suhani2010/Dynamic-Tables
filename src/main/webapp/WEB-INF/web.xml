@@ -16,6 +16,10 @@
         <servlet-name>CreateTableServlet</servlet-name>
         <servlet-class>com.table.servlets.CreateTableServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertDataServlet</servlet-name>
+        <servlet-class>com.table.servlets.InsertDataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CreateTableServlet</servlet-name>
         <url-pattern>/CreateTableServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertDataServlet</servlet-name>
+        <url-pattern>/InsertDataServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
