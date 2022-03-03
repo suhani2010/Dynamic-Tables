@@ -55,9 +55,11 @@ public class CreateTableServlet extends HttpServlet {
        User user=(User)session.getAttribute("currentUser");
        String email=user.getEmail();
        Boolean b = dao.createNewTable(tableName, tableColumns,email);
-       if(b)out.println("REGISTERED");
+       if(b){
+           response.sendRedirect("successfull.jsp");
+       }
        else{
-           System.out.println("Try Again");
+           response.sendRedirect("failure.jsp");
        }
        
     }  
