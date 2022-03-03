@@ -152,11 +152,13 @@ if(user==null)
                     </tr>
                 </thead>    
           <%
+              
             while(rs.next())
             {
                 %><tr>
-                <td><%out.print(rs.getString(1)+"\t");%></td>
+                <td><a href="viewTables.jsp?id=<%=rs.getString(1)%>" class="list-group-item list-group-item-action title " ><%out.print(rs.getString(1)+"\t");%></a></td>
                 </tr><%
+                    
                 
             }%>
             </table></div><%
