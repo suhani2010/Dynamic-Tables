@@ -52,7 +52,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
        }
        
        else{
-           System.out.println("Try Again");
+           response.sendRedirect("duplicate.jsp");
        }
        
        

@@ -34,7 +34,11 @@
             ArrayList<String> tfields=dao.getFields(tableName);
             try{
            Statement st=ConnectionProvider.getConnection().createStatement();
-            ResultSet rs=st.executeQuery("SELECT * FROM "+tableName);
+            String query=request.getParameter("query");
+            System.out.println("tablename = "+tableName);
+            System.out.println("query = "+query);
+            ResultSet rs=st.executeQuery(query);
+            
         %>
         <div class="container">
             <div class="text-center mt-5"><a  class="btn btn-success" href="filter.jsp?tablenameR=<%=tableName%>" style="color: #fff; text-decoration: none"><span class="fa fa-filter mr-2"></span>Filters</a></div>

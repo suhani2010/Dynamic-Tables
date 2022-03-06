@@ -144,6 +144,25 @@ public class UserDao {
         }
         return tfields;
     }
+    public ArrayList<String> getFieldTypes(String tableName)
+    {
+        ArrayList<String> tType=new ArrayList<String>();
+        try{
+        Statement st = ConnectionProvider.getStatement();
+        ResultSet rs = st.executeQuery("desc "+tableName);
+            
+            while(rs.next())
+            {
+                tType.add(rs.getString(2));
+                System.out.println(rs.getString(2));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return tType;
+    }
     
     public boolean insertData(ArrayList<String> tdata,String tableName){
         

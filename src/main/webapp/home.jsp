@@ -143,6 +143,7 @@ if(user==null)
            String query="SELECT tablename FROM userInfo where email="+"'"+email+"'";
             ResultSet rs=st.executeQuery(query);
             System.out.println(query);
+            int flag=0;
             %>
             <div class="container text-center pr-5">
             <table class="table table-bordered m-5" style="border: 1px ">
@@ -155,14 +156,19 @@ if(user==null)
               
             while(rs.next())
             {
-                %><tr>
-                <td><a href="viewTables.jsp?id=<%=rs.getString(1)%>" class="list-group-item list-group-item-action title " ><%out.print(rs.getString(1)+"\t");%></a></td>
-                </tr><%
-                    
                 
-            }%>
+                %><tr>
+                <td><a href="viewTables.jsp?tablenameR=<%=rs.getString(1)%>" class="list-group-item list-group-item-action title " ><%out.print(rs.getString(1)+"\t");%></a></td>
+                </tr><%
+                  flag=1;  
+                
+            }
+                if(flag == 0){%>
+                <h2>You have not created any table</h2>
+                <%}%>
+            
             </table></div><%
-           }
+           }        
            catch(Exception e)
            {
                e.printStackTrace();
@@ -182,10 +188,7 @@ if(user==null)
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="js/myjs.js" type="text/javascript"></script>
 
-<script>
-   
-    
-</script>  
+ 
         <!--javascripts-->
  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>       
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -33,6 +33,7 @@
             String tableName=request.getParameter("tablenameR");
             UserDao dao=new UserDao(ConnectionProvider.getConnection());
         ArrayList<String> tfields=dao.getFields(tableName);
+        ArrayList<String> tType=dao.getFieldTypes(tableName);
         
         %>
         <form action="InsertDataServlet" id="recordform" method="post">
@@ -49,7 +50,37 @@
          <div class="row mt-2">
                       <div class="col-6 form-group">
                           <label>Enter <%=tfields.get(i)%> : </label>
-                          <input type="text" name="<%=(i)%>" class="form-control" placeholder="Enter field name">
+                          <%
+                              if(tType.get(i).equalsIgnoreCase("varchar(51)")){
+                          %>
+                          <input type="email" name="<%=(i)%>" class="form-control" placeholder="Enter field name" required>
+                          <%
+                              }
+                              if(tType.get(i).equalsIgnoreCase("varchar(255)")){
+                          %>
+                          <input type="text" name="<%=(i)%>" class="form-control" placeholder="Enter field name" required>
+                          <%
+                              }
+                              if(tType.get(i).equalsIgnoreCase("tinyint(1)"))
+                                      {
+                          %>
+                          <select class="form-control" name="<%=(i)%>">
+                            <option value="1">true</option>
+                            <option value="0">false</option>
+                          </select>
+                          <%
+                              }
+                              if(tType.get(i).equalsIgnoreCase("datetime")){
+                          %>
+                          <input type="date" name="<%=(i)%>" class="form-control" placeholder="Enter field name" required>
+                          <%
+                              }
+                              if(tType.get(i).equalsIgnoreCase("int")){
+                          %>
+                          <input type="number" name="<%=(i)%>" class="form-control" placeholder="Enter field name" required>
+                          <%
+                              }
+                          %>
                       </div>
          </div>
         <%

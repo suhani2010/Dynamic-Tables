@@ -5,7 +5,7 @@ function add_more_field(){
     let n=parseInt(s);
     
     for(let i=0;i<n;i++){
-    countre+=1
+    countre+=1;
     html=`<div class="row mt-2" id="row`+countre+`">
                       <div class="col-6 form-group">
                           <label>Field Name</label>
@@ -14,10 +14,11 @@ function add_more_field(){
                       <div class="col-6 form-group">
                           <label>Field Type</label><br>
                           <select class="form-control" name="fieldtype`+countre+`">
-                            <option value="DATETIME">DATETIME</option>
-                            <option value="varchar(255)">VARCHAR</option>
-                            <option value="int">INT</option>
+                            <option value="DATETIME">DATE</option>
+                            <option value="varchar(255)">String</option>
+                            <option value="int">Number</option>
                             <option value="BOOLEAN">BOOLEAN</option>
+                            <option value="varchar(51)">Email</option>
                           </select>
                       </div>
                   </div>

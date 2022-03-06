@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : viewTables
     Created on : 3 Mar, 2022, 9:49:19 AM
     Author     : HP
@@ -27,8 +27,9 @@
         <div class="text-center mt-5">
         <h1>Table Details</h1>
         </div>
+        
         <%
-            String tableName=request.getParameter("id");
+            String tableName=request.getParameter("tablenameR");
             UserDao dao=new UserDao(ConnectionProvider.getConnection());
             ArrayList<String> tfields=dao.getFields(tableName);
             try{
@@ -36,6 +37,8 @@
             ResultSet rs=st.executeQuery("SELECT * FROM "+tableName);
         %>
         <div class="container">
+            <div class="text-center mt-5"><a  class="btn btn-success" href="filter.jsp?tablenameR=<%=tableName%>" style="color: #fff; text-decoration: none"><span class="fa fa-filter mr-2"></span>Filters</a></div>
+            
             <table class="table table-bordered m-5" style="border: 1px ">
                 <thead class="thead-light">
                     <tr>
