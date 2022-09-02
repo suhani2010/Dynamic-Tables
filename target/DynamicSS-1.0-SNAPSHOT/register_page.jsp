@@ -14,17 +14,24 @@
         
     </head>
     <body>
-        
+        <nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+    <!--<a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>-->
+</nav>
 
-        <main class=" d-flex align-items-center banner-background p-5" style="background-color:purple">
+        <main class=" d-flex align-items-center banner-background p-5" style="background-color:whitesmoke">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <div class="card">
-                            <div class="card-header  text-center text-white" style="background-color:pink">
-                                <span class="fa fa-user-circle fa-3x"></span>
+                            <div class="card-header  text-center text-white" style="background-color:black">
+                                <span style="color:whitesmoke" class="fa fa-user-circle fa-3x"></span>
                                 <br/>
-                                <h3>Register here</h3>
+                                <h3 style="color:whitesmoke">Register here</h3>
                             </div>
                             <div class="card-body">
                                 <form action="RegisterServlet" method="post" id="reg-form">

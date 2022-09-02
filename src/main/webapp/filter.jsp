@@ -17,9 +17,20 @@
         
     </head>
     <body>
-        <div class="mt-5 mr-2">
-        <a  class="btn btn-dark" href="home.jsp" style="color: #fff; text-decoration: none;float:right">Home</a>
-        </div>
+        <nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+            <div class="container">
+            <a  class="nav-link btn btn-dark" href="home.jsp" style="color: #fff; text-decoration: none;float:right">Home</a>
+            </div>
+    <a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+</nav>
+<!--        <div class="mt-5 mr-2">
+        
+        </div>-->
             <main class="d-flex align-items-center banner-background p-5" >
             <div class="container">
                 <div class="row">

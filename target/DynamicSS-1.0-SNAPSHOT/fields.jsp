@@ -1,5 +1,6 @@
 
 
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.table.helper.ConnectionProvider"%>
 <%@page import="com.table.dao.UserDao"%>
@@ -19,6 +20,17 @@
        
     </head>
     <body>
+        <!--navbar start-->
+      
+<nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+    <a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+</nav>
+        <!--navbar end-->
        <main class="d-flex align-items-center banner-background p-5" >
             <div class="container">
                 <div class="row">
@@ -28,13 +40,20 @@
                                 <br/>
                                 <h3 style="color: #ffffff">Give Details</h3>
                             </div>
+                           
                             <div class="card-body">
         <%
             String tableName=request.getParameter("tablenameR");
             UserDao dao=new UserDao(ConnectionProvider.getConnection());
         ArrayList<String> tfields=dao.getFields(tableName);
         ArrayList<String> tType=dao.getFieldTypes(tableName);
-        
+        if(tfields.size() == 0)
+        {
+           %>
+           <h1>Table does not exists</h1>
+        <%
+        }
+else{
         %>
         <form action="InsertDataServlet" id="recordform" method="post">
             <div class="row mt-2">
@@ -90,6 +109,9 @@
                         <button type="submit" class="btn btn-outline-dark mt-4">Insert</button>
         </div>
         </form>
+        <%
+            }
+        %>
         </div>
                         </div>
                     </div>

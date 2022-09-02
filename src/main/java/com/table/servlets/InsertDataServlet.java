@@ -6,6 +6,7 @@
 package com.table.servlets;
 
 import com.table.dao.UserDao;
+import com.table.entities.Message;
 import com.table.entities.User;
 import com.table.helper.ConnectionProvider;
 import java.io.IOException;
@@ -47,12 +48,19 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
        
        Boolean b = dao.insertData(tdata,tableName);
        if(b){
-           
-       response.sendRedirect("inserted.jsp");
+           HttpSession session=request.getSession();
+            Message m=new Message("Data Inserted Succesfully","success","alert-success");
+            session.setAttribute("msg", m);
+            response.sendRedirect("home.jsp");
+//       response.sendRedirect("inserted.jsp");
        }
        
        else{
-           response.sendRedirect("duplicate.jsp");
+           HttpSession session=request.getSession();
+            Message m=new Message("Data insertion Failed!! (Primary key should be unique)","error","alert-danger");
+            session.setAttribute("msg", m);
+            response.sendRedirect("home.jsp");
+//           response.sendRedirect("duplicate.jsp");
        }
        
        

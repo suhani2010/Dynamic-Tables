@@ -23,7 +23,15 @@
 
         
     </head>
-    <body>
+    <body >
+        <nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+    <a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+</nav>
         <div class="text-center mt-5">
         <h1>Table Details</h1>
         </div>

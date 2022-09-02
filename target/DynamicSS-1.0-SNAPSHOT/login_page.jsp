@@ -1,4 +1,4 @@
-`
+
 <%@page import="com.table.entities.Message"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,16 +17,23 @@
         <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
-        <main class="d-flex align-items-center banner-background p-5" style="background-color:purple">
+        <nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+    <!--<a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>-->
+</nav>
+        <main class="d-flex align-items-center banner-background p-5" style="background-color:whitesmoke">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 offset-md-4">
                         <div class="card">
-                            <div class="card-header  text-center" style="background-color:pink">
-                                <span class="fa fa-user-plus fa-3x"></span>
+                            <div class="card-header  text-center" style="background-color:black">
+                                <span style="color:whitesmoke" class="fa fa-user-plus fa-3x"></span>
                                 <br/>
-                                <h3>Login here</h3>
+                                <h3 style="color:whitesmoke">Login here</h3>
                             </div>
                            <%
                                 Message m=(Message)session.getAttribute("msg");

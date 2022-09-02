@@ -34,12 +34,44 @@ if(user==null)
         </style>
     <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body style="background: #F6ECEC">
+    <body style="background: #F1F1F1">
+        
+        <!--navbar start-->
+      
+<nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand" href="home.jsp">
+      
+<i class="fa fa-th-large"></i>
+<b style="font-size:25px">Dynamic Tables</b>
+  </a>
+    <a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+</nav>
+        <!--navbar end-->
+        
+        <div>
+             <%
+                                Message m=(Message)session.getAttribute("msg");
+                                if(m!=null)
+                                {
+                            %>
+                            
+                                    <div class="alert <%=m.getCssClass()%> " role="alert">
+                                        <%=m.getContent()%>
+                                    </div>
+                            <%
+                                session.removeAttribute("msg");
+                                }
+                            
+                            
+                            %>
+        </div>
+        
+        
         <div class="text-center mt-4">
             <button class="btn btn-dark" data-toggle="modal" data-target="#table-modal" style="color: #fff">Create table</button>
             <button class="btn btn-dark" data-toggle="modal" data-target="#record-modal" style="color: #fff" style="color: #fff">Insert Data</button>
             <button class="btn btn-dark" data-toggle="modal" data-target="#mytables-modal" style="color: #fff" style="color: #fff">My Tables</button>
-            <a  class="btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
+            
         </div> 
       
  
