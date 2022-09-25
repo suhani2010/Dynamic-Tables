@@ -1,4 +1,4 @@
-# Walkover Dynamictables
+# Walkover Dynamic tables
 <p align="center">
  <img src="https://user-images.githubusercontent.com/58841158/153365007-ae1243ba-ddc8-4bb0-a78f-37a213902b5b.jpeg" alt="drawing" height="150" width="150"> 
 </p>
