@@ -64,9 +64,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
        }
        
        
-       HttpSession session=request.getSession(true);
-       User user=(User)session.getAttribute("currentUser");
-       String email=user.getEmail();
+//       HttpSession session=request.getSession(true);
+//       User user=(User)session.getAttribute("currentUser");
+//       String email=user.getEmail();
        
        
    

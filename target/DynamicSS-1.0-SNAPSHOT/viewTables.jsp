@@ -58,6 +58,7 @@
                     
                     <%
                         }%>
+                        <th>Action</th>
                     </tr>
                 </thead>                    
                 <%
@@ -70,9 +71,19 @@
                      System.out.println("for i = "+i+" , "+rs.getString(i));
                 %>
                 <td><%=rs.getString(i)%></td>
+                
                <%
                    }
-                %></tr><%
+               %>
+               <td>
+                   <!--<button class="btn btn-success">Edit</button>-->
+                   <form action="DeleteDataServlet" method="post">
+                       <input type="hidden" value=<%=tableName%> name="tablenameR" />
+                       <input type="hidden" value=<%=rs.getString(1)%> name="pkvalue" />
+                       <input type="hidden" value=<%=tfields.get(0)%> name="pkfield" />
+                   <button type="submit" class="ml-2 btn btn-danger">Delete</button>
+                   </form>
+                </td></tr><%
             }%>
                     
             </table>

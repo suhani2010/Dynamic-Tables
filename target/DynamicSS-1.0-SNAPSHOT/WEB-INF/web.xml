@@ -24,6 +24,10 @@
         <servlet-name>ShowFilterServlet</servlet-name>
         <servlet-class>com.table.servlets.ShowFilterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteDataServlet</servlet-name>
+        <servlet-class>com.table.servlets.DeleteDataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ShowFilterServlet</servlet-name>
         <url-pattern>/ShowFilterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDataServlet</servlet-name>
+        <url-pattern>/DeleteDataServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

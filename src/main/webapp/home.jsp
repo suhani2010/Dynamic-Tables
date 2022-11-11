@@ -31,17 +31,24 @@ if(user==null)
 
         
         <style>
+            .btn-outline-info{
+                color: #000;
+            }
+             .btn-outline-info:hover {
+    background-color: #4494AD;
+    color: #fff;
+}
         </style>
     <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body style="background: #F1F1F1">
+    <body style="background: #F2F4F2" >
         
         <!--navbar start-->
       
 <nav class="navbar navbar-dark bg-dark ">
   <a class="navbar-brand" href="home.jsp">
       
-<i class="fa fa-th-large"></i>
+<i class="fa fa-th-large ml-5 pl-1"></i>
 <b style="font-size:25px">Dynamic Tables</b>
   </a>
     <a  class="nav-link btn btn-dark" href="LogoutServlet" style="color: #fff; text-decoration: none"><span class="fa fa-user-circle"></span> Logout</a>
@@ -67,12 +74,30 @@ if(user==null)
         </div>
         
         
-        <div class="text-center mt-4">
-            <button class="btn btn-dark" data-toggle="modal" data-target="#table-modal" style="color: #fff">Create table</button>
-            <button class="btn btn-dark" data-toggle="modal" data-target="#record-modal" style="color: #fff" style="color: #fff">Insert Data</button>
-            <button class="btn btn-dark" data-toggle="modal" data-target="#mytables-modal" style="color: #fff" style="color: #fff">My Tables</button>
+        
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col">
+                      <div class="m-5 pt-5" style="font-family: montserrat">
+                      <h1 style="font-size:55px"><span style="color:#367588">Dynamic Tables.</span> Mysql's UI to Create and manage your customized tables with ease.</h1>
+                         <h4 class="pt-4 pb-4" style="color:#808080">Harness the power of your data by building and managing your data in Mysql UI tool.</h4>
+                     
+                         
+                    <button class="btn btn-outline-info btn-lg mr-2" data-toggle="modal" data-target="#table-modal" >Create table</button>
+                    <button class="btn btn-outline-info btn-lg mr-2" data-toggle="modal" data-target="#record-modal"  >Insert Data</button>
+                    <button class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#mytables-modal"  >My Tables</button>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="text-center mt-3">
+                      <img src="images/dbimage2.jpg" alt="alt" height="8%" width="88%"/>
+                      </div>
+                  </div>
+                </div>
+            </div>
             
-        </div> 
+            
+        
       
  
 
@@ -134,8 +159,33 @@ if(user==null)
                   
                    <div class="row" id="row0">
                       <div class="col-6">
-                          <label>Enter Table Name</label>
-                          <input type="text" name="tablenameR" class="form-control" placeholder="Enter table name">
+                            <label>Select Table Name</label>
+                          <select name="tablenameR" size="1" id="Points">
+                          <%
+                              String email=user.getEmail();
+                              Connection con=ConnectionProvider.getConnection();
+                              try{
+                                Statement st=con.createStatement();
+                                String email1=user.getEmail();
+                                String query="Select tablename from userInfo where email = '"+email+"'";
+                                ResultSet rs=st.executeQuery(query);
+                              while(rs.next())
+                              {
+                          %>
+                          
+                            <option value=<%=rs.getString(1)%> selected><%=rs.getString(1)%></option>
+                         
+                          <%
+                              }
+                          }        
+                        catch(Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                     %>
+                      </select>
+                          <!--<input type="text" name="tablenameR" class="form-control" placeholder="Enter table name" autocomplete="off">-->
                       </div>
                    </div>
                        
@@ -168,17 +218,17 @@ if(user==null)
       </div>
       <div class="modal-body text-center">
         <%
-           Connection con=ConnectionProvider.getConnection();
+            con=ConnectionProvider.getConnection();
            try{
-           Statement st=con.createStatement();
-           String email=user.getEmail();
+            Statement st=con.createStatement();
+           String email1=user.getEmail();
            String query="SELECT tablename FROM userInfo where email="+"'"+email+"'";
             ResultSet rs=st.executeQuery(query);
             System.out.println(query);
             int flag=0;
             %>
             <div class="container text-center pr-5">
-            <table class="table table-bordered m-5" style="border: 1px ">
+            <table class="table table-bordered ml-3" style="border: 1px ">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Table Names</th>

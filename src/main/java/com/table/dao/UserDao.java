@@ -122,9 +122,7 @@ public class UserDao {
         catch(Exception e){
             e.printStackTrace();
         }
-        return f;
-        
-    
+        return f; 
 }
     public ArrayList<String> getFields(String tableName)
     {
@@ -143,6 +141,25 @@ public class UserDao {
             System.out.println(e);
         }
         return tfields;
+    }
+    public ArrayList<String> getTables(String email)
+    {
+        ArrayList<String> tNames=new ArrayList<String>();
+        try{
+        Statement st = ConnectionProvider.getStatement();
+        ResultSet rs = st.executeQuery("Select tablename from userInfo where email ="+email);
+            
+            while(rs.next())
+            {
+                tNames.add(rs.getString(1));
+                System.out.println(rs.getString(1));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return tNames;
     }
     public ArrayList<String> getFieldTypes(String tableName)
     {
@@ -163,7 +180,23 @@ public class UserDao {
         }
         return tType;
     }
-    
+    public boolean deleteData(String pkvalue,String pkfield,String tableName){
+        
+        boolean f=false;
+        try{
+            
+            String query="DELETE FROM "+tableName+" WHERE "+pkfield+"='"+pkvalue+"'";
+//                    String query="DELETE FROM tmp WHERE email ='amss@gmail.com'";
+            System.out.println(query);
+            Statement st= ConnectionProvider.getStatement();
+            st.executeUpdate(query);
+            f=true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    }
     public boolean insertData(ArrayList<String> tdata,String tableName){
         
         boolean f=false;
