@@ -1,4 +1,4 @@
-# Walkover Dynamictables
+# Walkover Dynamic tables
 <p align="center">
  <img src="https://user-images.githubusercontent.com/58841158/153365007-ae1243ba-ddc8-4bb0-a78f-37a213902b5b.jpeg" alt="drawing" height="150" width="150"> 
 </p>
@@ -53,8 +53,7 @@ View the project status by following steps :
 - If everything is done in order then this will open the website in your local machine.
 
 
-## Deployment Link
-https://dynamictables.herokuapp.com/
+
 
 ## Tech Stack
 
