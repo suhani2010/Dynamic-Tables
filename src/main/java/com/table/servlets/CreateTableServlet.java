@@ -56,11 +56,26 @@ public class CreateTableServlet extends HttpServlet {
        String email=user.getEmail();
        Boolean b = dao.createNewTable(tableName, tableColumns,email);
        if(b){
-           response.sendRedirect("successfull.jsp");
+           HttpSession session1=request.getSession();
+            Message m=new Message("Table created Succesfully","success","alert-success");
+            session1.setAttribute("msg", m);
+            response.sendRedirect("home.jsp");
+//       response.sendRedirect("inserted.jsp");
        }
+       
        else{
-           response.sendRedirect("failure.jsp");
+           HttpSession session1=request.getSession();
+            Message m=new Message("Table not created! Try with another table name","error","alert-danger");
+            session1.setAttribute("msg", m);
+            response.sendRedirect("home.jsp");
+//           response.sendRedirect("duplicate.jsp");
        }
+//       if(b){
+//           response.sendRedirect("successfull.jsp");
+//       }
+//       else{
+//           response.sendRedirect("failure.jsp");
+//       }
        
     }  
 
